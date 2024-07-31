@@ -1,55 +1,82 @@
-# Método para limpar a tela no terminal
-def limpar_tela
-  system('clear') || system('cls')
-end
+puts "Bem-vindo à Calculadora !"
+
 
 loop do
-  # Solicita ao usuário que digite o primeiro operando
-  puts "Digite o primeiro número:"
-  operando1 = gets.chomp.to_f
 
-  # Solicita ao usuário que digite o segundo operando
-  puts "Digite o segundo número:"
-  operando2 = gets.chomp.to_f
 
-  # Solicita ao usuário que escolha uma operação
-  puts "Escolha a operação (+, -, *, /):"
-  operacao = gets.chomp
+  puts "Escolha a operação que deseja realizar:"
 
-  # Realiza a operação escolhida
-  resultado = case operacao
-              when "+"
-                operando1 + operando2
-              when "-"
-                operando1 - operando2
-              when "*"
-                operando1 * operando2
-              when "/"
-                if operando2 == 0
-                  "Erro: Divisão por zero"
-                else
-                  operando1 / operando2
-                end
-              else
-                "Operação inválida"
-              end
+  puts "1. Adição"
 
-  # Exibe a operação e o resultado de forma amigável
-  if resultado.is_a?(String)
-    puts resultado
-  else
-    puts "#{operando1} #{operacao} #{operando2} = #{resultado}"
+  puts "2. Subtração"
+
+  puts "3. Multiplicação"
+
+  puts "4. Divisão"
+
+  puts "5. Sair"
+
+
+  escolha = gets.chomp.to_i
+
+
+break if escolha == 5
+
+
+  if escolha < 1 || escolha > 4
+
+    puts "Escolha inválida. Tente novamente."
+
+    next
+
   end
 
-  # Pergunta ao usuário se deseja realizar uma nova operação ou encerrar o programa
-  puts "Deseja realizar outra operação? (s/n):"
-  continuar = gets.chomp.downcase
 
-  # Sai do loop se o usuário digitar 'n'
-  break if continuar != 's'
+  puts "Digite o primeiro número:"
 
-  # Limpa a tela antes de iniciar uma nova operação
-  limpar_tela
+  numero1 = gets.chomp.to_f
+
+
+  puts "Digite o segundo número:"
+
+  numero2 = gets.chomp.to_f
+
+
+  resultado = nil
+
+  case escolha
+
+  when 1
+
+    resultado = numero1 + numero2
+
+  when 2
+
+    resultado = numero1 - numero2
+
+  when 3
+
+    resultado = numero1 * numero2
+
+  when 4
+
+    if numero2 == 0
+
+      resultado = "Erro: Divisão por zero não é permitida."
+
+    else
+
+      resultado = numero1 / numero2
+
+    end
+
+  end
+
+
+  puts "O resultado é: #{resultado}"
+
+
+puts "Obrigado por usar a Calculadora Ruby. Até mais!"
+
+
 end
-
-puts "Calculadora encerrada."
