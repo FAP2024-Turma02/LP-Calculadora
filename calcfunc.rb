@@ -1,7 +1,6 @@
 puts "\nBem-vindo à calculadora Ruby!"
 
 def calculadora
-
   loop do
 
     puts "\nEscolha a operação"
